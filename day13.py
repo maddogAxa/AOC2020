@@ -25,33 +25,6 @@ def getData(filename):
     dataList[index]=dataList[index].rstrip('\r\n')
   return dataList
 
-def ff(val,idx,step,startIdx,index,idd,delay):
-  found=False
-  ch=False
-  print(startIdx)
-  for a in range(0,idd,step):
-    m=index+a
-    if m%val[1][startIdx]==delay[startIdx]:
-      print(step*val[1][startIdx]-m)
-      if( val[1][startIdx]*step-m)<=0:
-        return(False)
-      if startIdx<len(delay)-1:
-        if ch:
-          found=ff(val,idx,step,startIdx+1,m,idd,delay)
-        else:
-          found=ff(val,idx,step*val[1][startIdx],startIdx+1,m,idd*val[1][startIdx+1],delay)
-        if found :
-          break
-        else:
-          if not ch:
-            ch=True
-            step=step*val[1][startIdx]
-            idd*=val[1][startIdx+1]
-      else:
-        found = True
-        break
-  return(found)
-
 def test01():
   line=[]
   if(os.path.exists(FileName)):
